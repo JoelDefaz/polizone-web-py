@@ -1,0 +1,23 @@
+<!-- mi_app/templates/mi_app/agregar_ruta.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nueva Ruta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Agregar Nueva Ruta de Bus</h1>
+        <form method="POST">
+            {% csrf_token %}  <!-- Protección contra ataques CSRF -->
+            {{ form.as_p }}   <!-- Muestra el formulario con todos los campos -->
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+
+        <a href="{% url 'polibus' %}" class="btn btn-secondary mt-3">Ver lista de rutas</a>
+    </div>
+</body>
+</html>

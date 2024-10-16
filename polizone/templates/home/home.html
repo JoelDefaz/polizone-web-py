@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polizone</title>
+    
+    <!-- Carga de la etiqueta static -->
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Enlazando el archivo CSS -->
+    <script src="{% static 'js/scripts.js' %}"></script> <!-- Enlazando el archivo JS -->
+</head>
+<body>
+    <header>
+        <h1>PoliZon-e!</h1>
+        <img src="{% static 'img/buho.webp' %}" alt="Logo" width="100px"> <!-- Ajusta el src con la ruta de tu logo -->
+        
+        <!-- Contenedor de botones en el header -->
+        <div class="button-container">
+            <button onclick="loadContent('cafeteria/')">Cafetería</button>
+            <button onclick="loadContent('polibus/')">Polibus</button>
+            <button onclick="loadContent('fepon/')">FEPON</button>
+        </div>
+    </header>
+    
+    <div id="content"></div> <!-- Área para mostrar el contenido dinámico -->
+</body>
+</html>

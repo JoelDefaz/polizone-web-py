@@ -1,0 +1,50 @@
+<!-- mi_app/templates/mi_app/lista_rutas.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Rutas de Buses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+
+        <h1>Lista de Rutas de Buses</h1>
+
+        <!-- Caja de búsqueda -->
+        <form method="GET" action="{% url 'polibus' %}" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Buscar ruta..." aria-label="Buscar ruta">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                </div>
+            </div>
+        </form>        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ruta</th>
+                    <th>Paradas</th>
+                    <th>Horario</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ruta in rutas %}
+                <tr>
+                    <td>{{ ruta.ruta }}</td>
+                    <td>{{ ruta.paradas }}</td>
+                    <td>{{ ruta.horario }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No hay rutas disponibles.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'add_ruta' %}" class="btn btn-primary mb-3">Agregar Nueva Ruta</a>
+    </div>
+</body>
+</html>
