@@ -4,6 +4,8 @@ Este proyecto está configurado para ser ejecutado en un servidor web utilizando
 
 # Configuración
 
+*Nota: Los valores dentro de los corchetes angulares <> debe ser remplazado y los corchetes eliminados*
+
 ## 1.Requisitos
 
 - **IDE de Desarrollo(App desarrollada en VSC)**
@@ -24,6 +26,11 @@ Sigue los pasos a continuación para configurar el servidor en **Django**
 ```
 python -m venv <Nombre del ambiente>
 ```
+
+*Nota: Si se diera un problema de que no se puede ejectar Scripts (En Windows) revisar*
+[Problemas de ejecución de Scripts](#problemas-de-ejecución-de-scripts)
+
+
 3. Una vez creado el ambiente vamos a activar el ambiente para realizar las instalaciones de las dependecias necesarias, asi que ejecutamos el siguiente comando:
 comando
 ```
@@ -49,3 +56,26 @@ python <ruta>/manage.py runserver
 
 ## Problemas con Django
 Para cualquie problema relacionado con Django se puede buscar toda la documentación en: `https://docs.djangoproject.com/es/5.1/`
+
+## Problemas de ejecución de Scripts
+
+Si es un problema de permisos en el sistema que impide ejecutar scripts, es posible que la política de ejecución de PowerShell esté restringiendo la ejecución de scripts.
+
+### Solución:
+1. Verificar la Política de Ejecución en PowerShell
+   - Abrir **PowerShell** como administrador.
+   - Escribir el siguiente comando para ver la política de ejecución actual:
+     ```powershell
+     Get-ExecutionPolicy
+     ```
+   - Si se ve que la política está configurada en `Restricted`, significa que los scripts están bloqueados.
+
+2. Cambiar la Política de Ejecución
+   - Para permitir la ejecución de scripts locales, cambiar la política de ejecución a `RemoteSigned`. Esto permitirá ejecutar scripts locales sin restricciones.
+   - Ejecutar el siguiente comando en PowerShell (también debe estar abierto como administrador):
+     ```powershell
+     Set-ExecutionPolicy RemoteSigned
+     ```
+   - Finalmente confirmar el cambio.
+
+3. Con esto deberia solucionarse y se puede continuar la [configuración](#configuración)
